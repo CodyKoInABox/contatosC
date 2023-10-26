@@ -8,10 +8,13 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+
+typedef char String[100];
 
 // Estrutura de uma node da lista
 struct Node{
-    char nome[70];
+    String nome;
     int ddd;
     int numero;
 
@@ -54,6 +57,21 @@ void criarContato(Node* newNode){
 }
 
 
+// Ler um contato baseado no nome do titular
+Node *lerContatoNome(String nome){
+    
+    Node *currentNode = head;
+
+    while(strcmp(currentNode->nome, nome)){
+    
+       currentNode = currentNode->nextNode;
+    }
+
+    return currentNode;
+}
+
+
+
 // testes
 int main(){
 
@@ -64,9 +82,12 @@ int main(){
     criarContato(&node2);
 
     
-    printf("%d", (*head).ddd);
+    //printf("%d", (*head).ddd);
+    //printf("\n");
+    //printf("%d", (*head).nextNode->ddd);
+    
     printf("\n");
-    printf("%d", (*head).nextNode->ddd);
+    printf("%d", lerContatoNome("Victor")->ddd);
 
     return 0;
 }
