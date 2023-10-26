@@ -62,7 +62,20 @@ Node *lerContatoNome(String nome){
     
     Node *currentNode = head;
 
-    while(strcmp(currentNode->nome, nome)){
+    while(strcmp(currentNode->nome, nome) != 0){
+    
+       currentNode = currentNode->nextNode;
+    }
+
+    return currentNode;
+}
+
+// Ler um contato baseado no numero
+Node *lerContatoNumero(int numero){
+    
+    Node *currentNode = head;
+
+    while(currentNode->numero != numero){
     
        currentNode = currentNode->nextNode;
     }
@@ -72,11 +85,12 @@ Node *lerContatoNome(String nome){
 
 
 
+
 // testes
 int main(){
 
     Node node1 = {"Victor", 47, 999999999};
-    Node node2 = {"Manfred", 49, 999999999};
+    Node node2 = {"Manfred", 49, 888888888};
 
     criarContato(&node1);
     criarContato(&node2);
@@ -88,6 +102,8 @@ int main(){
     
     printf("\n");
     printf("%d", lerContatoNome("Victor")->ddd);
+    printf("\n");
+    printf("%d", lerContatoNumero(888888888)->ddd);
 
     return 0;
 }
