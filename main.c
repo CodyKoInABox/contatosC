@@ -113,20 +113,61 @@ void deletarContatoNome(String nome){
        currentNode = currentNode->nextNode;
     }
     
-    // previousNode da nextNode vira a previousNode atual
-    *currentNode->nextNode->previousNode = *currentNode->previousNode;
-    
-    // nextNode da previousNode vira a nextNode atual
-    *currentNode->previousNode->nextNode = *currentNode->nextNode;
-    
-}
+    if(currentNode != NULL){
 
+
+    // se a node NAO for a primeira da lista
+    if (currentNode->previousNode != NULL) {
+
+        // nextNode da node anterior vira a nextNode da node atual
+        currentNode->previousNode->nextNode = currentNode->nextNode;
+    }
+
+    // se a node NAO for a ultima da lista
+    if (currentNode->nextNode != NULL) {
+
+        // previousNode da proxima node vira a previousNode da node atual
+        currentNode->nextNode->previousNode = currentNode->previousNode;
+    }
+
+    // se a node FOR a primeira da lista
+    if (currentNode == head) {
+
+        // atualizar a head para apontar para a segunda node da lista, ja que a primeira vai ser deletada
+        head = currentNode->nextNode;
+    }
+
+    // nao sei se isso serve pra alguma coisa ja que eu nao aloquei com malloc mas nao ta dando erro entao vou deixar aqui
+    free(currentNode);
+
+    }else{
+        printf("Nenhum contato com o nome %s", nome);
+    }
+}
 
 // funcao que printa uma node
 void printNode(Node* node){
 
-    printf("%d | %d | %s", node->ddd, node->numero, node->nome);
+    printf(" %d | %d | %s", node->ddd, node->numero, node->nome);
+
 }
+
+
+// funcao que lista todos os contatos
+void listarContatos(){
+
+    Node *currentNode = head;
+
+    printf("DDD |  NUMERO   | NOME");
+
+    while(currentNode != NULL){
+        printf("\n");
+        printNode(currentNode);
+        currentNode = currentNode->nextNode;
+    }
+    
+}
+
 
 
 // testes
@@ -134,28 +175,41 @@ int main(){
 
     Node node1 = {"Victor", 47, 999999999};
     Node node2 = {"Manfred", 49, 888888888};
+    Node node3 = {"Joao", 42, 555555555};
+    Node node4 = {"Thiago", 44, 444444444};
 
     criarContato(&node1);
     criarContato(&node2);
+    criarContato(&node3);
+    criarContato(&node4);
 
     
-    printf("%d", (*head).numero);
-    printf("\n");
-    printf("%d", (*head).nextNode->numero);
+    //printf("%d", (*head).numero);
+    //printf("\n");
+    //printf("%d", (*head).nextNode->numero);
     
     
     
-    printf("\n");
-    atualizarContatoNome("Manfred", 777777777, 42);
-    printf("%d-%d", (*head).ddd, (*head).numero);
+    //printf("\n");
+    //atualizarContatoNome("Manfred", 777777777, 42);
+    //printf("%d-%d", (*head).ddd, (*head).numero);
     
     //printf("\n");
     //printf("%d", lerContatoNome("Victor")->ddd);
     //printf("\n");
     //printf("%d", lerContatoNumero(888888888)->ddd);
 
+    //printf("\n");
+    //printNode((*head).nextNode);
+    //printf("\n");
+    //printf("\n");
+
+
+    listarContatos();
     printf("\n");
-    printNode((*head).nextNode);
+    deletarContatoNome("Joao");
+    printf("\n");
+    listarContatos();
 
     return 0;
 }
