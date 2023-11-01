@@ -103,6 +103,25 @@ void atualizarContatoNome(String nome, int novoNumero, int novoDDD){
 }
 
 
+// deletar um contato baseado no nome
+void deletarContatoNome(String nome){
+    
+    Node *currentNode = head;
+
+    while(strcmp(currentNode->nome, nome) != 0){
+    
+       currentNode = currentNode->nextNode;
+    }
+    
+    // previousNode da nextNode vira a previousNode atual
+    *currentNode->nextNode->previousNode = *currentNode->previousNode;
+    
+    // nextNode da previousNode vira a nextNode atual
+    *currentNode->previousNode->nextNode = *currentNode->nextNode;
+    
+}
+
+
 // testes
 int main(){
 
