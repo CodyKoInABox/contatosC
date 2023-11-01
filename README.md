@@ -1,2 +1,1 @@
-# contatosC
-Doubly Linked List exercise in C
+# Doubly Linked List exercise in C
