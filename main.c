@@ -170,6 +170,18 @@ void listarContatos(){
     
 }
 
+void mainMenu(){
+    printf("|-- GERENCIADOR DE CONTATOS --|");
+    printf("-------------------------------");
+    printf("| 1 -> Listar Contatos");
+    printf("| 2 -> Buscar Contato");
+    printf("| 3 -> Criar Contato");
+    printf("| 4 -> Atualizar Contato");
+    printf("| 5 -> Deletar Contato");
+    printf("| 6 -> Sair");
+    printf("-------------------------------");
+    printf("Insira a opcao: ");
+}
 
 
 // testes
@@ -209,7 +221,7 @@ int main(){
 
     listarContatos();
     printf("\n");
-    deletarContatoNome("Manfred");
+    deletarContatoNome("Victor");
     printf("\n");
     listarContatos();
 
