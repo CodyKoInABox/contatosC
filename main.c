@@ -122,6 +122,13 @@ void deletarContatoNome(String nome){
 }
 
 
+// funcao que printa uma node
+void printNode(Node* node){
+
+    printf("%s | %d | %d", node->nome, node->ddd, node->numero);
+}
+
+
 // testes
 int main(){
 
@@ -146,6 +153,9 @@ int main(){
     //printf("%d", lerContatoNome("Victor")->ddd);
     //printf("\n");
     //printf("%d", lerContatoNumero(888888888)->ddd);
+
+    printf("\n");
+    printNode((*head).nextNode);
 
     return 0;
 }
