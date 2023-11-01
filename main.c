@@ -136,6 +136,8 @@ int main(){
     printf("\n");
     printf("%d", (*head).nextNode->numero);
     
+    
+    
     printf("\n");
     atualizarContatoNome("Manfred", 777777777, 42);
     printf("%d-%d", (*head).ddd, (*head).numero);
