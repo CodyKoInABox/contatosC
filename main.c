@@ -53,6 +53,9 @@ void criarContato(Node* newNode){
 
         // Head aponta para a nova node
         head = newNode;
+        
+        // proxima node aponta para a nova primeira node
+        newNode->nextNode->previousNode = newNode;
     }
 }
 
@@ -113,36 +116,35 @@ void deletarContatoNome(String nome){
        currentNode = currentNode->nextNode;
     }
     
-    if(currentNode != NULL){
-
-
-    // se a node NAO for a primeira da lista
-    if (currentNode->previousNode != NULL) {
-
-        // nextNode da node anterior vira a nextNode da node atual
-        currentNode->previousNode->nextNode = currentNode->nextNode;
+    // se for a unica node
+    if(currentNode->nextNode == NULL && currentNode->previousNode == NULL){
+        // head vira null
+        head = NULL;
+        printf("primeiro");
     }
-
-    // se a node NAO for a ultima da lista
-    if (currentNode->nextNode != NULL) {
-
-        // previousNode da proxima node vira a previousNode da node atual
-        currentNode->nextNode->previousNode = currentNode->previousNode;
+    // se for a ultima node
+    else if(currentNode->nextNode == NULL){
+        // node anterior aponta para null
+        currentNode->previousNode->nextNode = NULL;
+        printf("segundo");
     }
-
-    // se a node FOR a primeira da lista
-    if (currentNode == head) {
-
-        // atualizar a head para apontar para a segunda node da lista, ja que a primeira vai ser deletada
+    // se for a primeira node
+    else if(currentNode->previousNode == NULL){
+        // head aponta para a proxima node e proxima node aponta para head
         head = currentNode->nextNode;
+        currentNode->nextNode->previousNode = head;
+        printf("terceiro");
+        
+    }
+    // se estiver no meio
+    else{
+        // node anterior aponta para a proxima node e proxima node aponta para node anterior
+        currentNode->previousNode->nextNode = currentNode->nextNode;
+        currentNode->nextNode->previousNode = currentNode->previousNode;
+        printf("quarto");
     }
 
-    // nao sei se isso serve pra alguma coisa ja que eu nao aloquei com malloc mas nao ta dando erro entao vou deixar aqui
-    free(currentNode);
-
-    }else{
-        printf("Nenhum contato com o nome %s", nome);
-    }
+    
 }
 
 // funcao que printa uma node
@@ -207,7 +209,7 @@ int main(){
 
     listarContatos();
     printf("\n");
-    deletarContatoNome("Joao");
+    deletarContatoNome("Manfred");
     printf("\n");
     listarContatos();
 
