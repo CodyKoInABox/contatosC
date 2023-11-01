@@ -84,6 +84,23 @@ Node *lerContatoNumero(int numero){
 }
 
 
+// atualizar o numero de um contato baseado no nome
+// nome = nome do contato a ser atualizado
+// novoNumero = novo numero do contato
+// novoDDD = novo DDD do contato
+void atualizarContatoNome(String nome, int novoNumero, int novoDDD){
+    
+    Node *currentNode = head;
+
+    while(strcmp(currentNode->nome, nome) != 0){
+    
+       currentNode = currentNode->nextNode;
+    }
+    
+    currentNode->numero = novoNumero;
+    currentNode->ddd = novoDDD;
+    
+}
 
 
 // testes
@@ -96,14 +113,18 @@ int main(){
     criarContato(&node2);
 
     
-    //printf("%d", (*head).ddd);
-    //printf("\n");
-    //printf("%d", (*head).nextNode->ddd);
+    printf("%d", (*head).numero);
+    printf("\n");
+    printf("%d", (*head).nextNode->numero);
     
     printf("\n");
-    printf("%d", lerContatoNome("Victor")->ddd);
-    printf("\n");
-    printf("%d", lerContatoNumero(888888888)->ddd);
+    atualizarContatoNome("Manfred", 777777777, 42);
+    printf("%d-%d", (*head).ddd, (*head).numero);
+    
+    //printf("\n");
+    //printf("%d", lerContatoNome("Victor")->ddd);
+    //printf("\n");
+    //printf("%d", lerContatoNumero(888888888)->ddd);
 
     return 0;
 }
