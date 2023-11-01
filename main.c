@@ -171,6 +171,8 @@ void listarContatos(){
 }
 
 void mainMenu(){
+    int op;
+    
     printf("|-- GERENCIADOR DE CONTATOS --|");
     printf("-------------------------------");
     printf("| 1 -> Listar Contatos");
@@ -181,6 +183,32 @@ void mainMenu(){
     printf("| 6 -> Sair");
     printf("-------------------------------");
     printf("Insira a opcao: ");
+    
+    scanf("%d", &op);
+    
+    //system(“clear”);
+    system.cls();
+    
+    switch(op){
+        case 1:
+        
+        break;
+        case 2:
+        
+        break;
+        case 3:
+        
+        break;
+        case 4:
+        
+        break;
+        case 5:
+        
+        break;
+        default:
+        
+        break;
+    }
 }
 
 
@@ -196,8 +224,10 @@ int main(){
     criarContato(&node2);
     criarContato(&node3);
     criarContato(&node4);
-
     
+    mainMenu();
+
+
     //printf("%d", (*head).numero);
     //printf("\n");
     //printf("%d", (*head).nextNode->numero);
@@ -219,11 +249,11 @@ int main(){
     //printf("\n");
 
 
-    listarContatos();
-    printf("\n");
-    deletarContatoNome("Victor");
-    printf("\n");
-    listarContatos();
+    //listarContatos();
+    //printf("\n");
+    //deletarContatoNome("Victor");
+    //printf("\n");
+    //listarContatos();
 
     return 0;
 }
