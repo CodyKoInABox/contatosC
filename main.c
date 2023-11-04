@@ -388,15 +388,15 @@ void mainMenu(){
 // testes
 int main(){
 
-    Node node1 = {"Victor", 47, 999999999};
-    Node node2 = {"Manfred", 49, 888888888};
-    Node node3 = {"Joao", 42, 555555555};
-    Node node4 = {"Thiago", 44, 444444444};
+    //Node node1 = {"Victor", 47, 999999999};
+    //Node node2 = {"Manfred", 49, 888888888};
+    //Node node3 = {"Joao", 42, 555555555};
+    //Node node4 = {"Thiago", 44, 444444444};
 
-    criarContato(&node1);
-    criarContato(&node2);
-    criarContato(&node3);
-    criarContato(&node4);
+    //criarContato(&node1);
+    //criarContato(&node2);
+    //criarContato(&node3);
+    //criarContato(&node4);
     
     mainMenu();
 
